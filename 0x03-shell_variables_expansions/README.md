@@ -1,5 +1,5 @@
 # 0x03. Shell, init files, variables and expansions
-### This Directories contain the folowing files:
+### This Directorie contain the folowing files:
 | File          | Description                                             |
 | ------------- | ------------------------------------------------------- |
 |0-alias|	Creates an alias|
