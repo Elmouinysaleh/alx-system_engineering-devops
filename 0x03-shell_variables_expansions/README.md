@@ -3,13 +3,12 @@
 | File          | Description                                             |
 | ------------- | ------------------------------------------------------- |
 |0-alias|	Creates an alias|
-|`#f03c15``1-hello_you`|	Prints hello user, where user is the current Linux user|
-|`#f03c15``2-path`|	Add /action to the PATH. /action should be the last directory the shell looks into when looking for a program|
-|`#f03c15``3-paths`|	Counts the number of the directories in the PATH|
-|`#f03c15``4-global_variables`|	Lists environment variables|
+|$${\color{red}1-hello_you}$$`1-hello_you`|	Prints hello user, where user is the current Linux user|
+|`2-path`|	Add /action to the PATH. /action should be the last directory the shell looks into when looking for a program|
+|`3-paths`|	Counts the number of the directories in the PATH|
+|`4-global_variables`|	Lists environment variables|
 |`5-local_variables`|	Lists all local variables and environment variables, and functions|
 |`6-create_local_variable`|	Creates a new local variable named BETTY|
-
 |`7-create_global_variable`|	Creates a new global variable named HOLBERTON|
 |`8-true_knowledge`|	Prints the result of the addition of 128 with the value stored in the environment variable TRUEKNOWLEDGE, followed by a new line|
 |`9-divide_and_rule`|	Prints the result of POWER divided by DIVIDE, followed by a new line|
