@@ -4,7 +4,8 @@
 
 By: Sylvain Kalache
 
-![image](https://d1m75rqqgidzqn.cloudfront.net/wp-data/2021/06/11162836/iStock-1313617131.jpg)
+![SSH-Authentication](https://github.com/Elmouinysaleh/alx-system_engineering-devops/assets/36488900/6e8614bd-e250-4971-ad66-3d5c2119e3f0)
+
 
 ## *Resources:*
 
