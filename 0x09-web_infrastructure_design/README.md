@@ -31,3 +31,4 @@ This project contains tasks for learning more about the different ways a web inf
     + 1 server.
     + 1 load-balancer (HAproxy) configured as cluster with the other one.
   + Split components (web server, application server, database) with their own server.
+    
