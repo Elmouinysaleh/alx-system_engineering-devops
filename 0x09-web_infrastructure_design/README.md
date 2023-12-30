@@ -11,7 +11,7 @@ This project contains tasks for learning more about the different ways a web inf
     + 1 application server.
     + 1 application files (your code base).
     + 1 database (MySQL).
-    + 1 domain name foobar.com configured with a www record that points to the server IP `8.8.8.8`.
+    + 1 domain name `foobar.com` configured with a `www` record that points to the server IP `8.8.8.8`.
 + [x] 1. Distributed web infrastructure <br/>_**[1-distributed_web_infrastructure](1-distributed_web_infrastructure)**_ contains the URL of an image containing the design of a three server web infrastructure that hosts the website `www.foobar.com`.
   + Components to be added to the previous design:
     + 2 servers.
