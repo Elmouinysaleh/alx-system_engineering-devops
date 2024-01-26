@@ -45,6 +45,7 @@ To successfully complete this project, you may find the following resources help
 This project consists of multiple tasks. Each task will build upon the knowledge and skills acquired in the previous ones. Below is an overview of the tasks involved:
 
 ### Task 0: ARP Spoofing and Sniffing Unencrypted Traffic (Advanced)
+![01c5a1e3f29d290b188d34be5cf534d3255058a7](https://github.com/Elmouinysaleh/alx-system_engineering-devops/assets/36488900/9d3bcfb8-a3c3-4418-9768-1aef62312d41)
 
 In this task, you will delve into network security by intercepting unencrypted traffic through ARP spoofing. By redirecting traffic to a malicious machine, you can analyze the intercepted data for potential sensitive information. The task involves sniffing unencrypted traffic and forwarding it to its intended destination while remaining undetected. The provided example showcases using telnet to send an email via SendGrid's SMTP relay. Your objective is to execute the `user_authenticating_into_server` script locally and use `tcpdump` to sniff the network and find the password. Please note that the script won't work on Docker containers or macOS.
 
