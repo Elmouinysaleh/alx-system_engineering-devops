@@ -10,7 +10,7 @@ sudo apt update
 sudo apt install -y haproxy
 
 # Configure HAProxy
-cat <<EOT | sudo tee /etc/haproxy/haproxy.cfg
+sudo tee /etc/haproxy/haproxy.cfg > /dev/null <<EOT
 frontend http_front
     bind *:80
     mode http
@@ -21,6 +21,13 @@ backend http_back
     balance roundrobin
     server web-01 448547-web-01:80 check
     server web-02 448547-web-02:80 check
+EOT
+
+# Enable HAProxy as a service
+sudo systemctl enable haproxy
+
+# Restart HAProxy to apply the configuration
+sudo systemctl restart haproxy
 EOT
 
 # Enable HAProxy as a service
