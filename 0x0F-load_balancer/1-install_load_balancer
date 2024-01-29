@@ -1,37 +1,23 @@
 #!/usr/bin/env bash
-# Script Description: Install and configure HAproxy on a new Ubuntu machine.
-# Install HAproxy
-# Configure HAproxy
-# Enable HAproxy init script
-# Restart HAproxy to apply changes
+# Installs and setup haproxy
 
-# Update package lists and install HAProxy
-sudo apt update
-sudo apt install -y haproxy
+apt-get install -y software-properties-common
+add-apt-repository -y ppa:vbernat/haproxy-1.8
+apt-get -y update
+apt-get install -y haproxy=1.8.\*
 
-# Configure HAProxy
-sudo tee /etc/haproxy/haproxy.cfg > /dev/null <<EOT
-frontend http_front
-    bind *:80
-    mode http
-    default_backend http_back
+echo "ENABLED=1" > /etc/default/haproxy
 
-backend http_back
-    mode http
-    balance roundrobin
-    server web-01 448547-web-01:80 check
-    server web-02 448547-web-02:80 check
-EOT
+# Listen to web1 and web2 servers                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
+echo "
+   listen load_balancer
+   bind *:80
+   mode http
+   balance roundrobin
+   option httpclose
+   option forwardfor
+   server 448547-web-01 100.26.252.120:80 check
+   server 448547-web-02 52.91.101.188:80 check
+" >> /etc/haproxy/haproxy.cfg
 
-# Enable HAProxy as a service
-sudo systemctl enable haproxy
-
-# Restart HAProxy to apply the configuration
-sudo systemctl restart haproxy
-EOT
-
-# Enable HAProxy as a service
-sudo systemctl enable haproxy
-
-# Restart HAProxy to apply the configuration
-sudo systemctl restart haproxy
+service haproxy start
