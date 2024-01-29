@@ -10,14 +10,14 @@ sudo apt-get install -y haproxy
 
 server_config=\
 "
-frontend  medchakir
+frontend  elmouiny
         bind *:80
         mode http
-        default_backend medchakir
+        default_backend elmouiny
 backend medchakir
         balance roundrobin
-        server 63210-web-01 54.237.26.209:80 check
-        server 63210-web-02 34.229.137.28:80 check
+        server 448547-web-01 100.26.252.120:80 check
+        server 448547-web-02 52.91.101.188:80 check
 "
 echo "$server_config" | sudo tee -a /etc/haproxy/haproxy.cfg
 echo "ENABLED=1" | sudo tee -a /etc/default/haproxy
