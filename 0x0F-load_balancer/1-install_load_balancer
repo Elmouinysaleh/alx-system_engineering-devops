@@ -5,21 +5,26 @@
 # Enable HAproxy init script
 # Restart HAproxy to apply changes
 
-sudo apt-get -y update
-sudo apt-get install -y haproxy
+# Update package lists and install HAProxy
+sudo apt update
+sudo apt install -y haproxy
 
-server_config=\
-"
-frontend  elmouiny
-        bind *:80
-        mode http
-        default_backend elmouiny
-backend medchakir
-        balance roundrobin
-        server 448547-web-01 100.26.252.120:80 check
-        server 448547-web-02 52.91.101.188:80 check
-"
-echo "$server_config" | sudo tee -a /etc/haproxy/haproxy.cfg
-echo "ENABLED=1" | sudo tee -a /etc/default/haproxy
+# Configure HAProxy
+cat <<EOT | sudo tee /etc/haproxy/haproxy.cfg
+frontend http_front
+    bind *:80
+    mode http
+    default_backend http_back
 
-sudo service haproxy restart
+backend http_back
+    mode http
+    balance roundrobin
+    server web-01 [STUDENT_ID]-web-01:80 check
+    server web-02 [STUDENT_ID]-web-02:80 check
+EOT
+
+# Enable HAProxy as a service
+sudo systemctl enable haproxy
+
+# Restart HAProxy to apply the configuration
+sudo systemctl restart haproxy
