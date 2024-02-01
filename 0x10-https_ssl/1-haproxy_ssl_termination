@@ -20,9 +20,9 @@ defaults
     timeout server 50000
 
 frontend www-https
-    bind *:443 ssl crt /etc/letsencrypt/live/www.yourdomain.com/fullchain.pem
+    bind *:443 ssl crt /etc/letsencrypt/live/elmouiny.tech/fullchain.pem
     reqadd X-Forwarded-Proto:\ https
-    acl is_holberton hdr_end(host) -i www.yourdomain.com
+    acl is_holberton hdr_end(host) -i elmouiny.tech
     use_backend holberton_backend if is_holberton
 
 backend holberton_backend
