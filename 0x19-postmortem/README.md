@@ -49,7 +49,6 @@ The outage highlighted the importance of robust scalability measures and proacti
 *Humorous Addition:*  
 To commemorate the event, the team has decided to create a meme of our own: "When the server can't handle the meme, it's time for a scalability scheme!" (accompanied by a funny meme illustrating the situation).
 
-![Meme](https://media.giphy.com/media/3oEjHCWYp8gDCjBnbm/giphy.gif)
 
 
 
