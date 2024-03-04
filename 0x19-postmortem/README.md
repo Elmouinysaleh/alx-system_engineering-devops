@@ -1,4 +1,5 @@
 # Postmortem Report: Web Stack Debugging Project Outage
+![1__lgnEelC3jIc_WGMqQBiCA](https://github.com/Elmouinysaleh/alx-system_engineering-devops/assets/36488900/12af39bb-e4ce-471b-b907-3396b245837f)
 
 ## Issue Summary:
 
