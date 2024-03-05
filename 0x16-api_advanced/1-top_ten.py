@@ -1,21 +1,21 @@
-#!/usr/bin/python3
-"""Function to print hot posts on a given Reddit subreddit."""
 import requests
 
-
 def top_ten(subreddit):
-    """Print the titles of the 10 hottest posts on a given subreddit."""
-    url = "https://www.reddit.com/r/{}/hot/.json".format(subreddit)
-    headers = {
-        "User-Agent": "linux:0x16.api.advanced:v1.0.0 (by /u/bdov_)"
-    }
-    params = {
-        "limit": 10
-    }
-    response = requests.get(url, headers=headers, params=params,
-                            allow_redirects=False)
-    if response.status_code == 404:
-        print("None")
-        return
-    results = response.json().get("data")
-    [print(c.get("data").get("title")) for c in results.get("children")]
+    # Set custom User-Agent to avoid throttling
+    headers = {'User-Agent': 'my_custom_user_agent'}
+
+    # Construct the URL without following redirects
+    url = f"https://www.reddit.com/r/{subreddit}/hot.json?limit=10"  # Limit=10 for first 10 posts
+    response = requests.get(url, headers=headers, allow_redirects=False)
+
+    # Check for successful response (200 OK)
+    if response.status_code == 200:
+        data = response.json()
+        posts = data.get('data', {}).get('children', [])
+        if not posts:
+            print("No posts found.")
+        else:
+            for post in posts:
+                print(post['data']['title'])
+    else:
+        print("None")  # Handle unsuccessful response or invalid subreddit
