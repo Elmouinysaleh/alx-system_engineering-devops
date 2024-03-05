@@ -1,16 +1,7 @@
-<<<<<<< HEAD
-#!/usr/bin/python4
-"""
-Function to query subscribers on a given Reddit subreddit.
-"""
-import requests
-=======
 #!/usr/bin/python3
 """Queries the Reddit API and returns the number of subscribers"""
 
 from requests import get
->>>>>>> b55e16358f373cd457e809d0adb8744c51e238ce
-
 
 def number_of_subscribers(subreddit):
     """
