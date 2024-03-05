@@ -1,46 +1,25 @@
 #!/usr/bin/python3
 """
-Module to query the Reddit API and get the number of subscribers for a subreddit
+Function that queries the Reddit API and returns
+the number of subscribers for a given subreddit.
 """
 import requests
+import sys
+
 
 def number_of_subscribers(subreddit):
-    """
-    Function to get the number of subscribers for a subreddit
+    """Queries to Reddit API"""
+    u_agent = "Mozilla/5.0"
 
-    Args:
-        subreddit (str): The name of the subreddit
+    headers = {"User-Agent": u_agent}
 
-    Returns:
-        int: Number of subscribers for the subreddit, 0 if invalid subreddit
-    """
-    # Set a custom User-Agent to avoid issues
-    headers = {'User-Agent': 'MyRedditBot/1.0 (by YourUsername)'}
-
-    # Make a request to the Reddit API
-    url = f'https://www.reddit.com/r/{subreddit}/about.json'
-    response = requests.get(url, headers=headers, allow_redirects=False)
-
-    # Check if the request was successful (status code 200)
-    if response.status_code == 200:
-        # Parse the JSON response and return the number of subscribers
-        data = response.json()
-        subscribers = data['data']['subscribers']
-        return subscribers
-    elif response.status_code == 404:
-        # Subreddit not found, return 0
+    url = "https://www.reddit.com/r/{}/about.json".format(subreddit)
+    res = requests.get(url, headers=headers, allow_redirects=False)
+    if res.status_code != 200:
         return 0
-    else:
-        # Handle other errors
-        print(f"Error: {response.status_code}")
+    dic = res.json()
+    if "data" not in dic:
         return 0
-
-if __name__ == "__main__":
-    import sys
-
-    if len(sys.argv) < 2:
-        print("Please pass an argument for the subreddit to search.")
-    else:
-        subreddit_name = sys.argv[1]
-        subscribers_count = number_of_subscribers(subreddit_name)
-        print("{:d}".format(subscribers_count))
+    if "subscribers" not in dic.get("data"):
+        return 0
+    return res.json()["data"]["subscribers"]
