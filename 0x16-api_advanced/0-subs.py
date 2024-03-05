@@ -1,21 +1,29 @@
 #!/usr/bin/python3
 """Function to query subscribers on a given Reddit subreddit."""
 import requests
-import sys
 
 def number_of_subscribers(subreddit):
-    """Return the total number of subscribers on a given subreddit."""
-    url = f"https://www.reddit.com/r/{subreddit}/about.json"
-    headers = {"User-Agent": "linux:0x16.api.advanced:v1.0.0 (by /u/bdov_)"}
-    try:
-        response = requests.get(url, headers=headers, allow_redirects=False)
-        response.raise_for_status()  # Raise an exception for 4xx and 5xx status codes
-        data = response.json()
-        if "data" in data and "subscribers" in data["data"]:
-            return data["data"]["subscribers"]
-        else:
-            print(f"Error: Unexpected JSON format. Response content: {response.content}")
-            return 0
-    except requests.exceptions.RequestException as e:
-        print(f"Error: {e}")
-        return 0
+  """Queries Reddit API for subscriber count (unofficial).
+
+  Args:
+      subreddit: The name of the subreddit (e.g., "programming").
+
+  Returns:
+      An integer representing the subscriber count (approximate), 
+      or 0 if the subreddit is invalid.
+  """
+  # Set custom User-Agent to avoid throttling
+  headers = {'User-Agent': 'my_custom_user_agent'}
+
+  # Construct the URL without following redirects
+  url = f"https://www.reddit.com/r/{subreddit}/about.json?limit=0"  # Limit=0 avoids extra data
+  response = requests.get(url, headers=headers, allow_redirects=False)
+
+  # Check for successful response (200 OK)
+      if response.status_code == 200:
+    data = response.json()
+    # Extract subscriber count from data (may vary based on API updates)
+         return data.get('data', {}).get('subscribers', 0)
+      else:
+    # Handle unsuccessful response or invalid subreddit
+         return 0
