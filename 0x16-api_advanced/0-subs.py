@@ -1,6 +1,3 @@
-#!/usr/bin/python3
-"""Queries the Reddit API and returns the number of subscribers"""
-
 from requests import get
 
 def number_of_subscribers(subreddit):
@@ -11,7 +8,7 @@ def number_of_subscribers(subreddit):
         subreddit (str): The name of the subreddit.
     Returns:
         int: The number of subscribers for the subreddit.
-        Returns 0 if the subreddit is invalid.
+        Returns 0 if the subreddit is invalid or if an error occurs.
     """
     try:
         user_agent = {'User-Agent': 'MyBot/1.0'}
@@ -22,7 +19,7 @@ def number_of_subscribers(subreddit):
             data = response.json()
             return data.get('data', {}).get('subscribers', 0)
         else:
-            print(f"Error: Unable to access subreddit '{subreddit}'")
+            print(f"Error: Unable to access subreddit '{subreddit}'. Status code: {response.status_code}")
             return 0
     except Exception as e:
         print(f"Error: {e}")
