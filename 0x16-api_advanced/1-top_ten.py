@@ -1,3 +1,9 @@
+#!/usr/bin/python3
+"""
+1-Top_ten hot posts listed for a given subreddit.
+"""
+
+
 import requests
 
 def top_ten(subreddit):
@@ -8,7 +14,7 @@ def top_ten(subreddit):
     url = f"https://www.reddit.com/r/{subreddit}/hot.json?limit=10"  # Limit=10 for first 10 posts
     response = requests.get(url, headers=headers, allow_redirects=False)
 
-    # Check for successful response (200 OK)
+    # Check for successful response (200 OK) or redirection (302 Found)
     if response.status_code == 200:
         data = response.json()
         posts = data.get('data', {}).get('children', [])
