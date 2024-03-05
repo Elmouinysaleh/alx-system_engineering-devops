@@ -1,4 +1,4 @@
-from requests import get
+import requests
 
 def number_of_subscribers(subreddit):
     """
@@ -11,9 +11,9 @@ def number_of_subscribers(subreddit):
         Returns 0 if the subreddit is invalid or if an error occurs.
     """
     try:
-        user_agent = {'User-Agent': 'MyBot/1.0'}
+        user_agent = {'User-Agent': 'YOUR_USERNAME'}
         url = f"https://www.reddit.com/r/{subreddit}/about.json"
-        response = get(url, headers=user_agent)
+        response = requests.get(url, headers=user_agent)
 
         if response.status_code == 200:
             data = response.json()
