@@ -1,5 +1,7 @@
 #!/usr/bin/python3
-"""Function to query subscribers on a given Reddit subreddit."""
+"""
+Function to query subscribers on a given Reddit subreddit.
+"""
 import requests
 
 def number_of_subscribers(subreddit):
@@ -9,7 +11,7 @@ def number_of_subscribers(subreddit):
 
     if response.status_code == 200:
         data = response.json()
-        if 'data' in data and 'subscribers' in data['data']:
+        if 'kind' in data and data['kind'] == 't5':
             subscribers = data['data']['subscribers']
             return subscribers
 
