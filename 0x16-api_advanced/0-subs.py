@@ -7,7 +7,7 @@ def number_of_subscribers(subreddit):
     headers = {'User-Agent': 'Mozilla/5.0'}
     response = requests.get(url, headers=headers, allow_redirects=False)
 
-    if response.json()<>None:
+    if response.json()!= 0:
         data = response.json()
         subscribers = data['subscribers']
         return subscribers
