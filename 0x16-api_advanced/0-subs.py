@@ -3,17 +3,17 @@
 Importing requests module
 """
 
-from requests import get
+import requests
 
 def number_of_subscribers(subreddit):
     if subreddit is None or not isinstance(subreddit, str):
         return 0
 
-    user_agent = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3'}
-    url = 'https://www.reddit.com/r/{}/about.json'.format(subreddit)
+    user_agent = {'User-Agent': 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:97.0) Gecko/20100101 Firefox/97.0'}
+    url = f'https://www.reddit.com/r/{subreddit}/about.json'
 
     try:
-        response = get(url, headers=user_agent)
+        response = requests.get(url, headers=user_agent)
 
         # Check if the request was successful
         if response.status_code == 200:
