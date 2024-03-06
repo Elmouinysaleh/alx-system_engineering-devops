@@ -1,3 +1,10 @@
+#!/usr/bin/python3
+"""
+Importing requests module
+"""
+
+from requests import get
+
 def number_of_subscribers(subreddit):
     if subreddit is None or not isinstance(subreddit, str):
         return 0
