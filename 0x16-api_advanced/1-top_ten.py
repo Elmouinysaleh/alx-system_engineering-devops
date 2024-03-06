@@ -1,26 +1,23 @@
 #!/usr/bin/python3
-"""Query Reddit API, print titles of 10 hot posts in subreddit"""
-
-from requests import get
+""" Exporting csv files"""
+import json
+import requests
+import sys
 
 
 def top_ten(subreddit):
-    """
-    Queries the Reddit API and prints the titles of the first
-    10 hot posts listed for a given subreddit.
-    Args:
-        subreddit (str): The name of the subreddit.
-    Returns:
-        None
-    """
-    url = f"https://www.reddit.com/r/{subreddit}/hot.json?limit=10"
-    headers = {'User-Agent': 'MyBot/0.1'}
-    response = get(url, headers=headers, allow_redirects=False)
-
-    if response.status_code == 200:
-        data = response.json()
-        posts = data['data']['children']
-        for post in posts:
-            print(post['data']['title'])
+    """Read reddit API and return top 10 hotspots """
+    username = 'ledbag123'
+    password = 'Reddit72'
+    user_pass_dict = {'user': username, 'passwd': password, 'api_type': 'json'}
+    headers = {'user-agent': '/u/ledbag123 API Python for Holberton School'}
+    url = 'https://www.reddit.com/r/{}/hot.json'.format(subreddit)
+    client = requests.session()
+    client.headers = headers
+    r = client.get(url, allow_redirects=False)
+    if r.status_code == 200:
+        list_titles = r.json()['data']['children']
+        for a in list_titles[:10]:
+            print(a['data']['title'])
     else:
-        print(None)
+        return(print("None"))
