@@ -4,14 +4,6 @@
 ## 0x1B. Web stack debugging #4
 ============================
 
-DevOpsSysAdminScriptingDebugging
-
-*   By: Sylvain Kalache, co-founder at Holberton School
-*   Weight: 1
-*   Project will start Mar 11, 2024 4:00 AM, must end by Mar 15, 2024 4:00 AM
-*   Checker will be released at Mar 14, 2024 4:00 AM
-*   An auto review will be launched at the deadline
-
 ![](https://s3.amazonaws.com/intranet-projects-files/holbertonschool-sysadmin_devops/313/frdkCrb.jpg)
 
 Requirements
