@@ -1,15 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
+# Gracefully reloads Gunicorn.
 
-# Find the process ID of Gunicorn
-GUNICORN_PID=$(ps auxf | grep gunicorn | grep -v grep | awk '{print $2}')
-
-# Check if Gunicorn is running
-if [ -z "$GUNICORN_PID" ]; then
-  echo "Gunicorn is not running."
-  exit
-fi
-
-# Send a signal to the master process to gracefully reload the workers
-kill -HUP $GUNICORN_PID
-
-echo "Gunicorn reloaded gracefully."
+ps aux | grep gunicorn | awk '{ print $2 }' | xargs kill -HUP
